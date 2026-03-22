@@ -1,16 +1,16 @@
 {
-  "name": "songyee-portfolio",
+  "name": "ashley-portfolio",
   "version": "1.0.0",
   "description": "",
-  "homepage": "https://github.com/thibaut-evrard/songyee-portfolio#readme",
+  "homepage": "https://github.com/thibaut-evrard/ashley-portfolio#readme",
   "bugs": {
-    "url": "https://github.com/thibaut-evrard/songyee-portfolio/issues"
+    "url": "https://github.com/thibaut-evrard/ashley-portfolio/issues"
   },
   "license": "ISC",
   "author": "",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thibaut-evrard/songyee-portfolio.git"
+    "url": "git+https://github.com/thibaut-evrard/ashley-portfolio.git"
   },
   "type": "commonjs",
   "main": "index.js",
