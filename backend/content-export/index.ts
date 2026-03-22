@@ -1,16 +1,16 @@
+import { mkdir, writeFile } from "fs/promises";
 import { google, sheets_v4 } from "googleapis";
 import { CONTENT_SHEET_ID } from "../constants";
-import { getTabContent } from "../utils/tab-content";
-import { mkdir, writeFile } from "fs/promises";
-import { getTabNames } from "../utils/tabs";
 import { getAuthClient } from "../utils/auth";
-import "dotenv/config";
 import { Logs } from "../utils/logs";
+import { getTabContent } from "../utils/tab-content";
+import "dotenv/config";
+import { getTabNames } from "../utils/tabs";
 
 const OUTPUT_FOLDER_PATH = "../frontend/src/content";
 const OUTPUT_FILE_NAME = "content.json";
 
-export const SHEET_TABS = ["home", "about", "project-[uid]"];
+export const SHEET_TABS = ["home", "about", "contact", "project-[uid]"];
 
 function targetTabs(names: string[], prefix: string) {
   return names.filter((name) => name.includes(prefix));
@@ -19,7 +19,10 @@ function targetTabs(names: string[], prefix: string) {
 async function saveDataToJson(content: any) {
   try {
     await mkdir(OUTPUT_FOLDER_PATH, { recursive: true });
-    await writeFile(`${OUTPUT_FOLDER_PATH}/${OUTPUT_FILE_NAME}`, JSON.stringify(content, null));
+    await writeFile(
+      `${OUTPUT_FOLDER_PATH}/${OUTPUT_FILE_NAME}`,
+      JSON.stringify(content, null),
+    );
     console.log(`Content successfully written`);
   } catch (error) {
     console.error(`Error writing types to file: ${error}`);
@@ -41,11 +44,16 @@ async function getSiteContent() {
 
   const home = await getTabContent(sheets, CONTENT_SHEET_ID, "home");
   const about = await getTabContent(sheets, CONTENT_SHEET_ID, "about");
+  const contact = await getTabContent(sheets, CONTENT_SHEET_ID, "contact");
   const general = await getTabContent(sheets, CONTENT_SHEET_ID, "general");
 
   let projects = [];
   for (const projectName of targetTabs(tabNames, "project-")) {
-    const projectContent = await getTabContent(sheets, CONTENT_SHEET_ID, projectName);
+    const projectContent = await getTabContent(
+      sheets,
+      CONTENT_SHEET_ID,
+      projectName,
+    );
     projects.push(projectContent);
   }
 
@@ -53,6 +61,7 @@ async function getSiteContent() {
     general,
     home,
     about,
+    contact,
     projects,
   };
 
