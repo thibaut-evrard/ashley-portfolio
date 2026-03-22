@@ -1,0 +1,27 @@
+{
+  "name": "songyee-portfolio",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/thibaut-evrard/songyee-portfolio#readme",
+  "bugs": {
+    "url": "https://github.com/thibaut-evrard/songyee-portfolio/issues"
+  },
+  "license": "ISC",
+  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thibaut-evrard/songyee-portfolio.git"
+  },
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "cd frontend && npm run lint:all",
+    "backend:export": "cd backend && npm run export",
+    "dev": "cd frontend && npm run dev"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "oxfmt": "^0.34.0"
+  }
+}

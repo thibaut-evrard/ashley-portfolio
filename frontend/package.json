@@ -1,0 +1,33 @@
+{
+  "name": "vite-template-solid",
+  "version": "0.0.0",
+  "description": "",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "lint:all": "npm run lint && npm run fmt",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "@solidjs/meta": "^0.29.4",
+    "@solidjs/router": "^0.15.1",
+    "gsap": "^3.14.2",
+    "scss": "^0.2.4",
+    "solid-js": "^1.9.5"
+  },
+  "devDependencies": {
+    "oxfmt": "^0.34.0",
+    "oxlint": "^1.49.0",
+    "sass-embedded": "^1.97.3",
+    "solid-devtools": "^0.34.3",
+    "vite": "^7.1.4",
+    "vite-plugin-solid": "^2.11.8"
+  }
+}
