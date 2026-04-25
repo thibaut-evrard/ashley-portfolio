@@ -13,8 +13,12 @@ export const routes: RouteDefinition[] = [
     component: lazy(() => import("./pages/about")),
   },
   {
+    path: ROUTES.contact,
+    component: lazy(() => import("./pages/contact")),
+  },
+  {
     path: ROUTES.project(":uid?"),
-    component: lazy(() => import("./pages/project")),
+    component: lazy(() => import("./pages/projects")),
   },
   {
     path: "**",

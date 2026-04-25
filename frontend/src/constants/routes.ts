@@ -1,5 +1,6 @@
 export const ROUTES = {
   home: "/",
   about: "/about",
-  project: (uid: string) => `/project/${uid}`,
+  contact: "/contact",
+  project: (uid: string) => `/projects/${uid}`,
 };

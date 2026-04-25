@@ -1,7 +1,7 @@
 import type { sheets_v4 } from "googleapis";
 import { console } from "inspector";
-import { Logs } from './logs';
-import Content from './content';
+import Content from "./content";
+import { Logs } from "./logs";
 
 async function getTabData(api: sheets_v4.Sheets, id: string, tabName: string) {
   const { data } = await api.spreadsheets.values.get({
@@ -36,7 +36,7 @@ export async function getTabContent(
     const data = removeTabHead(rawData);
     content.addRows(data);
 
-    return content;
+    return content.data;
   } catch (error) {
     Logs.push(`ERROR - Failed to get content for tab ${tabName}: ${error}`);
   }

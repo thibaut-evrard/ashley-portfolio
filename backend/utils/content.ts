@@ -26,8 +26,13 @@ function purifyChunk(chunk: string) {
   return chunk.replace(REGEX.list, "");
 }
 
-class Content extends Object {
+class Content {
   currentKey = "";
+  private _data: object = {};
+
+  get data() {
+    return this._data;
+  }
 
   addRows(rows: string[][]) {
     for (const row of rows) {
@@ -41,16 +46,16 @@ class Content extends Object {
     const keyChunks = key.split(SEPARATORS.nesting);
 
     this.currentKey = key;
-    this.processChunk(keyChunks, values, this);
+    this.processChunk(keyChunks, values, this._data);
   }
 
-  private processChunk(keyChunks: string[], values: string[], target: any) {
+  private processChunk(keyChunks: string[], values: string[], target: object) {
     const rawCurrentChunk = keyChunks[0];
     const currentChunk = purifyChunk(rawCurrentChunk);
     const nextChunks = keyChunks.splice(1);
 
     if (nextChunks.length === 0) {
-      if (values.length > 1) {
+      if (values.length > 1 || isList(rawCurrentChunk)) {
         target[currentChunk] = values;
       } else if (values.length === 1) {
         target[currentChunk] = values[0];
