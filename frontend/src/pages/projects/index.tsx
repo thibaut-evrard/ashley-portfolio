@@ -1,11 +1,10 @@
 import { useLocation } from "@solidjs/router";
 import "./styles.scss";
-import markdownit from "markdown-it";
-import ProjectCarousel from "@/components/Project/Carousel";
+import ProjectComponentSection from "@/components/Project/ComponentSection";
 import { APP_CONTENT } from "@/constants/content";
+import { getComponentContent } from "./utils";
 
 export default function Project() {
-  const md = markdownit();
   const location = useLocation();
   const id = location.pathname.split("/")[2];
   const content = APP_CONTENT.projects.find(({ slug }) => slug === id);
@@ -13,14 +12,12 @@ export default function Project() {
     return null;
   }
 
+  const componentContent = getComponentContent(content.content);
+
   return (
     <div class="project">
       <h1>{content.title}</h1>
-      <div>
-        {content.hero.img && <ProjectCarousel images={content.hero.img} />}
-        <div innerHTML={md.render(content.hero.description)}></div>
-      </div>
-      <div innerHTML={md.render(content.main)}></div>
+      <ProjectComponentSection content={componentContent} />
     </div>
   );
 }
