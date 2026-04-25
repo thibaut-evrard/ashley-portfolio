@@ -3,5 +3,13 @@ interface Props {
 }
 
 export default function ProjectVimeo(props: Props) {
-  return <a href={props.content.url}>vimeo url</a>;
+  console.log("Rendering Vimeo with URL:", props.content.url);
+  return (
+    <iframe
+      title="Vimeo Video"
+      src={props.content.url}
+      allow="autoplay; fullscreen; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+  );
 }

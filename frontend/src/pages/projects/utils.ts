@@ -65,7 +65,10 @@ function isVimeo(
   if (contentAsCarousel.type !== "vimeo") {
     return false;
   }
-  if (contentAsCarousel.vimeo === undefined) {
+  if (
+    contentAsCarousel.vimeo === undefined ||
+    contentAsCarousel.vimeo.url === undefined
+  ) {
     return false;
   }
   return true;
